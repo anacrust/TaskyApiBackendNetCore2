@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskyApi", "TaskyApi\TaskyApi.csproj", "{D1CE22E4-AC1C-4827-912D-903DD9BBF785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1CE22E4-AC1C-4827-912D-903DD9BBF785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CE22E4-AC1C-4827-912D-903DD9BBF785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CE22E4-AC1C-4827-912D-903DD9BBF785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CE22E4-AC1C-4827-912D-903DD9BBF785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11A8049F-F601-4AFA-8CEA-C1C051B70504}
+	EndGlobalSection
+EndGlobal
