@@ -7,7 +7,7 @@ namespace TaskyApi.Models
     {
         public PaymentType()
         {
-            Task = new HashSet<Task>();
+            Tasky = new HashSet<Tasky>();
         }
 
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace TaskyApi.Models
         public DateTimeOffset Created { get; set; }
         public byte[] Updated { get; set; }
 
-        public ICollection<Task> Task { get; set; }
+        public ICollection<Tasky> Tasky { get; set; }
     }
 }

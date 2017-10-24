@@ -7,8 +7,8 @@ namespace TaskyApi.Models
     {
         public User()
         {
-            TaskCreator = new HashSet<Task>();
-            TaskTasker = new HashSet<Task>();
+            TaskyCreator = new HashSet<Tasky>();
+            TaskyTasker = new HashSet<Tasky>();
             UserBackgroundCheck = new HashSet<UserBackgroundCheck>();
             UserLicense = new HashSet<UserLicense>();
             UserM2muserRole = new HashSet<UserM2muserRole>();
@@ -36,8 +36,8 @@ namespace TaskyApi.Models
         public DateTimeOffset Created { get; set; }
         public byte[] Updated { get; set; }
 
-        public ICollection<Task> TaskCreator { get; set; }
-        public ICollection<Task> TaskTasker { get; set; }
+        public ICollection<Tasky> TaskyCreator { get; set; }
+        public ICollection<Tasky> TaskyTasker { get; set; }
         public ICollection<UserBackgroundCheck> UserBackgroundCheck { get; set; }
         public ICollection<UserLicense> UserLicense { get; set; }
         public ICollection<UserM2muserRole> UserM2muserRole { get; set; }

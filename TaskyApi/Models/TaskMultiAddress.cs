@@ -12,6 +12,6 @@ namespace TaskyApi.Models
         public byte[] Updated { get; set; }
 
         public Address Address { get; set; }
-        public Task Task { get; set; }
+        public Tasky Task { get; set; }
     }
 }

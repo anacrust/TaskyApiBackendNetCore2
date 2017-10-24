@@ -10,57 +10,62 @@ using TaskyApi.Models;
 namespace TaskyApi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/User")]
-    public class UserController : Controller
+    [Route("api/Taskies")]
+    public class TaskiesController : Controller
     {
         private readonly DevContext _context;
 
-        public UserController(DevContext context)
+        public TaskiesController(DevContext context)
         {
             _context = context;
         }
 
-        // GET: api/User
+        // GET: api/Taskies
         [HttpGet]
-        public IEnumerable<User> GetUser()
+        public IEnumerable<Tasky> GetTasky()
         {
-            return _context.User;
+            return _context.Tasky;
         }
 
-        // GET: api/User/5
+        // GET: api/Taskies/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser([FromRoute] Guid id)
+        public async Task<IActionResult> GetTasky([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
+            var tasky = await _context.Tasky
+                .Include(t => t.Creator)
+                .Include(t => t.Tasker)
+                .Include(t => t.TaskType)
+                .Include(t => t.PaymentType)
+                .SingleOrDefaultAsync(m => m.Id == id);
 
-            if (user == null)
+            if (tasky == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(tasky);
         }
 
-        // PUT: api/User/5
+        // PUT: api/Taskies/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser([FromRoute] Guid id, [FromBody] User user)
+        public async Task<IActionResult> PutTasky([FromRoute] Guid id, [FromBody] Tasky tasky)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != tasky.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(tasky).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +73,7 @@ namespace TaskyApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!TaskyExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +86,45 @@ namespace TaskyApi.Controllers
             return NoContent();
         }
 
-        // POST: api/User
+        // POST: api/Taskies
         [HttpPost]
-        public async Task<IActionResult> PostUser([FromBody] User user)
+        public async Task<IActionResult> PostTasky([FromBody] Tasky tasky)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.User.Add(user);
+            _context.Tasky.Add(tasky);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetTasky", new { id = tasky.Id }, tasky);
         }
 
-        // DELETE: api/User/5
+        // DELETE: api/Taskies/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteTasky([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            var tasky = await _context.Tasky.SingleOrDefaultAsync(m => m.Id == id);
+            if (tasky == null)
             {
                 return NotFound();
             }
 
-            _context.User.Remove(user);
+            _context.Tasky.Remove(tasky);
             await _context.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(tasky);
         }
 
-        private bool UserExists(Guid id)
+        private bool TaskyExists(Guid id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Tasky.Any(e => e.Id == id);
         }
     }
 }
