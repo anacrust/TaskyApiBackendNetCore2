@@ -25,6 +25,16 @@ namespace TaskyApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // #TODO Remove AddCors once in Production
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                builder =>
+                {
+                    builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
+
             services.AddDbContext<DevContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("TaskyDevDatabase")));
 

@@ -37,10 +37,10 @@ namespace TaskyApi.Controllers
             }
 
             var tasky = await _context.Tasky
-                .Include(t => t.Creator)
-                .Include(t => t.Tasker)
-                .Include(t => t.TaskType)
-                .Include(t => t.PaymentType)
+                //.Include(t => t.Creator)
+                //.Include(t => t.Tasker)
+                //.Include(t => t.TaskType)
+                //.Include(t => t.PaymentType)
                 .SingleOrDefaultAsync(m => m.Id == id);
 
             if (tasky == null)
