@@ -245,8 +245,8 @@ namespace TaskyApi.Models
                     .HasColumnName("active")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.Amount)
-                    .HasColumnName("amount")
+                entity.Property(e => e.PaymentAmount)
+                    .HasColumnName("paymentAmount")
                     .HasColumnType("decimal(10, 2)");
 
                 entity.Property(e => e.BackgroundCheckReq).HasColumnName("backgroundCheckReq");

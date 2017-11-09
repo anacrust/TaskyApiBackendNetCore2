@@ -29,8 +29,8 @@ namespace TaskyApi.Controllers
                                   select new PaymentTypeDto()
                                   {
                                       id = pt.Id,
-                                      name = pt.Name,
-                                      active = pt.Active
+                                      name = pt.Name //,
+                                      //active = pt.Active
                                   };
 
             return paymentTypeDtos;

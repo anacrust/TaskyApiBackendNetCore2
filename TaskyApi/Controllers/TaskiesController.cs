@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskyApi.Models;
+using TaskyApi.Models.DTOs;
 
 namespace TaskyApi.Controllers
 {
@@ -88,7 +89,7 @@ namespace TaskyApi.Controllers
 
         // POST: api/Taskies
         [HttpPost]
-        public async Task<IActionResult> PostTasky([FromBody] Tasky tasky)
+        public async Task<IActionResult> PostTasky([FromBody] TaskyDto tasky)
         {
             if (!ModelState.IsValid)
             {

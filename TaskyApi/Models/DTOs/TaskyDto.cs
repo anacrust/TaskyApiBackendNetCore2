@@ -29,7 +29,7 @@ namespace TaskyApi.Models.DTOs
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public DateTime? completed { get; set; }
-        public decimal? amount { get; set; }
+        public decimal paymentAmount { get; set; }
         public int paymentTypeId { get; set; }
         public string phone { get; set; }
         public string email { get; set; }

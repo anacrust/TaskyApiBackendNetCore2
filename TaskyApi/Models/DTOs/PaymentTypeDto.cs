@@ -9,7 +9,7 @@ namespace TaskyApi.Models.DTOs
     {
         public int id { get; set; }
         public string name { get; set; }
-        public bool? active { get; set; }
+        //public bool? active { get; set; }
 
         //public static implicit operator PaymentTypeDto(PaymentType model)
         //{
